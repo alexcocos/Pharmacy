@@ -1,0 +1,77 @@
+﻿@page "/"
+@model Pharmacy.Pages.Medicamente.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Medicamente</h1>
+
+<p>
+    <a asp-page="Create">Adauga un nou medicament </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicament[0].Denumire)
+          
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicament[0].Gramaj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicament[0].Forma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicament[0].Categorie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicament[0].Administrare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicament[0].Fabricant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicament[0].Pret)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Medicament)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Denumire)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gramaj)
+                    <span>g</span>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Forma.Denumire)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categorie.Denumire)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Administrare.Denumire)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fabricant.Nume)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pret)
+                    <span>RON</span>
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

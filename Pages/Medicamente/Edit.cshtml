@@ -1,0 +1,66 @@
+﻿@page
+@model Pharmacy.Pages.Medicamente.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Medicament</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Medicament.ID" />
+            <div class="form-group">
+                <label asp-for="Medicament.Denumire" class="control-label"></label>
+                <input asp-for="Medicament.Denumire" class="form-control" />
+                <span asp-validation-for="Medicament.Denumire" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medicament.Gramaj" class="control-label"></label>
+                <input asp-for="Medicament.Gramaj" class="form-control" />
+                <span asp-validation-for="Medicament.Gramaj" class="text-danger"></span>
+            </div>
+
+            <label asp-for="Medicament.FormaID" class="control-label">Forma</label>
+            <select asp-for="Medicament.FormaID" class="form-control" asp-items="ViewBag.FormaID">
+            </select>
+            <span asp-validation-for="Medicament.FormaID" class="text-danger"></span>
+
+            <label asp-for="Medicament.CategorieID" class="control-label">Forma</label>
+            <select asp-for="Medicament.CategorieID" class="form-control" asp-items="ViewBag.CategorieID">
+            </select>
+            <span asp-validation-for="Medicament.CategorieID" class="text-danger"></span>
+
+            <label asp-for="Medicament.AdministrareID" class="control-label">Mod de Administrare</label>
+            <select asp-for="Medicament.AdministrareID" class="form-control" asp-items="ViewBag.AdministrareID">
+            </select>
+            <span asp-validation-for="Medicament.AdministrareID" class="text-danger"></span>
+
+            <label asp-for="Medicament.FabricantID" class="control-label">Nume Fabricant</label>
+            <select asp-for="Medicament.FabricantID" class="form-control" asp-items="ViewBag.FabricantID">
+            </select>
+            <span asp-validation-for="Medicament.FabricantID" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="Medicament.Pret" class="control-label"></label>
+                <input asp-for="Medicament.Pret" class="form-control" />
+                <span asp-validation-for="Medicament.Pret" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
